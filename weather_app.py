@@ -1,13 +1,17 @@
 import requests
 apikey = open("apikey.txt",'r').read()
-while True:
-    location = input("Enter the location: ")
-    result = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={apikey}")
-    if result.json()["cod"] == 200:
-        break
+def fetch_weather(location):
+    try:
+        result = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={apikey}&units=metric")
+        data = result.json()
+        if result.json()["cod"] != 200:
+            return {"error": data.get("message", "Unknown error")}
 
-with open("result.txt",'w') as f:
-    f.write(f"{result.json()['name']}\n")
-    f.write(f"{result.json()['weather'][0]["description"]}\n")
-    f.write(f"temperature: {result.json()['main']['temp']}\t")
-    f.write(f"feels like: {result.json()['main']['feels_like']}\n")
+        return {
+            "name": data["name"],
+            "description": data["weather"][0]["description"],
+            "temp": data["main"]["temp"],
+            "feels_like": data["main"]["feels_like"]
+        }
+    except Exception as e:
+        return {"error": str(e)}
