@@ -42,7 +42,7 @@ class Ui_WeatherApp(object):
         self.SearchButton.setIcon(icon)
         self.SearchButton.setObjectName("SearchButton")
         self.SearchButton.clicked.connect(self.search)
-
+        
         self.currweatherlabel = QtWidgets.QLabel(self.centralwidget)
         self.currweatherlabel.setGeometry(QtCore.QRect(200, -10, 401, 51))
         font = QtGui.QFont()
@@ -105,6 +105,7 @@ class Ui_WeatherApp(object):
         self.location_input.setStatusTip(_translate("WeatherApp", "Enter the location"))
         self.location_input.setPlaceholderText(_translate("WeatherApp", "Search Location"))
         self.currweatherlabel.setText(_translate("WeatherApp", "Current Weather"))
+        self.SearchButton.setShortcut(_translate("WeatherApp", "Return"))
 
     def search(self):
         location = self.location_input.text().strip()
