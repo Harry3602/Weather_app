@@ -1,5 +1,5 @@
 import requests
-apikey = open("apikey.txt",'r').read()
+apikey = "587ac082e95894b044f613487273b578" # Your OpenWeatherMap API key here
 def fetch_weather(location):
     try:
         result = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={apikey}&units=metric")
