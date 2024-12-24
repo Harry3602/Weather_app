@@ -14,7 +14,7 @@ This is a simple weather application built using Python and PyQt5. It fetches we
 1. Clone the repository:
     ```sh
     git clone https://github.com/Harry3602/Weather_app.git
-    cd weather-app
+    cd Weather_app
     ```
 
 2. Install the required dependencies:
